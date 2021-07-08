@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Аутентификация')
+@section('title', 'Регистрация')
 
 @section('content')
     <div class="text-center mt-24">
@@ -11,15 +11,15 @@
             </svg>
         </div>
         <h2 class="text-4xl tracking-tight">
-            Sign in into your account
+            Sign up
         </h2>
-        <span class="text-sm">or <a href="{{ route('signup') }}" class="text-blue-500">
-         register a new account
+        <span class="text-sm">or <a href="{{ route('login') }}" class="text-blue-500">
+         sign in into your account
       </a>
    </span>
     </div>
     <div class="flex justify-center my-2 mx-4 md:mx-0">
-        <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="{{ route('authenticate') }}"
+        <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="{{ route('registration') }}"
               method="post">
             @csrf
             @if($errors->any())
@@ -36,25 +36,31 @@
                         </span>
                     </div>
 
-                        <div class="alert-content ml-4">
-                            <div class="alert-title font-semibold text-lg text-red-800">
-                                Error
-                            </div>
-                            @foreach($errors->all() as $error)
-                                <div class="alert-description text-sm text-red-600">
-                                    {{ $error }}<br>
-                                </div>
-                            @endforeach
+                    <div class="alert-content ml-4">
+                        <div class="alert-title font-semibold text-lg text-red-800">
+                            Error
                         </div>
+                        @foreach($errors->all() as $error)
+                            <div class="alert-description text-sm text-red-600">
+                                {{ $error }}<br>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             @endif
             <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-full px-3 mb-6">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Name</label>
+                    <input name="name"
+                           class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                           type='text' value="{{ old('name') }}">
+                </div>
                 <div class="w-full md:w-full px-3 mb-6">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Email
                         address</label>
                     <input name="email"
                            class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                           type='email'>
+                           type='email' value="{{ old('email') }}">
                 </div>
                 <div class="w-full md:w-full px-3 mb-6">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password</label>
@@ -62,10 +68,16 @@
                            class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                            type='password'>
                 </div>
+                <div class="w-full md:w-full px-3 mb-6">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password Conformation</label>
+                    <input name="password_confirmation"
+                           class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                           type='password'>
+                </div>
                 <div class="w-full md:w-full px-3">
                     <button
                         class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">
-                        Sign in
+                        Sign up
                     </button>
                 </div>
             </div>
