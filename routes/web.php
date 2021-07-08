@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,8 @@ Route::group(['middleware' => 'guest'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home', []);
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::post('/task/{task}', [HomeController::class, 'destroy'])->name('task.delete');
+    Route::post('/task', [HomeController::class, 'create'])->name('task.create');
+    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 });
