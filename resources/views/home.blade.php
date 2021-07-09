@@ -27,8 +27,8 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-white text-6xl font-thin">
-                                {{ \Illuminate\Support\Carbon::today()->day }}
-                                <div class="text-sm inline-block leading-normal"><strong>{{ \Illuminate\Support\Carbon::today()->dayName }}</strong> <br>{{ \Illuminate\Support\Carbon::today()->monthName }}
+                                {{ now()->day }}
+                                <div class="text-sm inline-block leading-normal"><strong>{{ now()->dayName }}</strong> <br>{{ now()->monthName }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-left text-sm text-white font-bold leading-normal">
