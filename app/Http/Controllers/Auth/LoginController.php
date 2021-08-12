@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         $user = User::whereEmail($credentials['email'])->get();
-        auth()->loginUsingId($user);
+        auth()->loginUsingId($user->id);
 
         return redirect(RouteServiceProvider::HOME);
     }
